@@ -4,26 +4,26 @@ The `gdex_client` Python utility can be run by registered GDEX users to get deta
 
 The script can be used both on the command line or loaded as a module to interact with the response object directly. The Jupyter Notebooks in this directory provides an example of how you could potentially use the module.
 
-`rdams_client.py` can be run using both python 2 and python 3, however, the `requests` library is required load the script.
+`gdex_client.py` can be run using both python 2 and python 3, however, the `requests` library is required load the script.
 
 ## Installation
 
-Download the `rdams_client` for the version of Python you are using (Python 2.x or Python 3.x) and execute `python rdams_client.py -help` for additional information.
+Download the `gdex_client` for the version of Python you are using (Python 2.x or Python 3.x) and execute `python gdex_client.py -help` for additional information.
 
 ## Usage
-`rdams_client.py` can be used as a command line tool or as a python module.
+`gdex_client.py` can be used as a command line tool or as a python module.
 
 **Command line Options**
 ```
-python rdams_client.py -get_summary <dsnnn.n>
-python rdams_client.py -get_metadata <dsnnn.n> <-f>
-python rdams_client.py -get_param_summary <dsnnn.n> <-f>
-python rdams_client.py -submit [control_file_name]
-python rdams_client.py -get_status <RequestIndex> <-proc_status>
-python rdams_client.py -download [RequestIndex]
-python rdams_client.py -globus_download [RequestIndex]
-python rdams_client.py -get_control_file_template <dsnnn.n>
-python rdams_client.py -help
+python gdex_client.py -get_summary <dsnnn.n>
+python gdex_client.py -get_metadata <dsnnn.n> <-f>
+python gdex_client.py -get_param_summary <dsnnn.n> <-f>
+python gdex_client.py -submit [control_file_name]
+python gdex_client.py -get_status <RequestIndex> <-proc_status>
+python gdex_client.py -download [RequestIndex]
+python gdex_client.py -globus_download [RequestIndex]
+python gdex_client.py -get_control_file_template <dsnnn.n>
+python gdex_client.py -help
 ```
 
 ### Description of Options
@@ -45,38 +45,38 @@ To submit an example request, try the following:
 
 - Download an example control file for the data set of your choice, `dsnnn.n`:
 ```
-rdams.py -get_control_file_template <dsnnn.n>
+gdex_client.py -get_control_file_template <dsnnn.n>
 ```
 
 - Submit the example control file for "dsnnn.n" into the system as a subset request:
 ```
-rdams.py -submit [dsnnn.n_control_file]
+gdex_client.py -submit [dsnnn.n_control_file]
 ```
 
 - Check on subset request processing status:
 ```
-rdams.py -get_status
+gdex_client.py -get_status
 ```
 
 - Download completed requests (only for external users):
 ```
-rdams.py -download [RequestIndex]
+gdex_client.py -download [RequestIndex]
 ```
 
 - Get a listing of parameters available for subsetting (used to populate dsnnn.n_control_file):
 ```
-rdams.py -get_metadata dsnnn.n
+gdex_client.py -get_metadata dsnnn.n
 ```
 
 - Download a generic control file template that includes field descriptors:
 ```
-rdams.py -get_control_file_template
+gdex_client.py -get_control_file_template
 ```
 
 ### Description of Parameters in Control File Template
 
 ```
-dataset=dsnnn.n                              # Required, use '-get_metadata' field 'dataset'
+dataset=dnnnnnn                              # Required, use '-get_metadata' field 'dataset'
 date=YYYYMMDDHHMN/to/YYYYMMDDHHMM            # Required, use '-get_metadata' fields 'startdate' and 'enddate' as bounds
 datetype=init                                # Optional, use if you would like the date range to include data based on model initialization date/time instead of valid date/time
 param=SSSS/SSSS/SSSS                         # Required, use '-get_metadata' field 'param' or 'param_description'.  Separate multiple parameters with "/".
